@@ -2,7 +2,8 @@ import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-//import userReducer from './user/user.reducer';
+import commonReducer from './common/common.reducer';
+import servicesReducer from './services/services.reducer';
 
 const persistConfig = {
     key: 'root',
@@ -11,7 +12,8 @@ const persistConfig = {
 }
 
 const rootReducer = combineReducers({
-    //user : userReducer,
+    commonParams : commonReducer,
+    services : servicesReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);
