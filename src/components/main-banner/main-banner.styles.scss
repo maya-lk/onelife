@@ -1,0 +1,71 @@
+.mainBannerWrap {
+    width: 100%;
+
+    .container {
+        max-width: 1380px;
+    }
+
+    .mainBanner {
+        width: 50%;
+        background-size: cover;
+        background-position: center;
+        min-height: 800px;
+    }
+
+    .mainContent {
+        width: 60%;
+        position: relative;
+        z-index: 10;
+        margin-left: -10%;
+        background-color: #fec901;
+        padding: 2rem 3rem;
+        margin-bottom: auto;
+        min-height: 700px;
+
+        .navigationWrap {
+            justify-content: flex-end;
+            padding: 0;
+
+            .navbar-nav {
+                flex-direction: revert;
+
+                .nav-link {
+                    padding: 0 1rem;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    font-size: 0.9rem;
+                    color: #fff;
+
+                    &:hover {
+                        color: #343536;
+                    }
+                }
+            }
+        }
+
+        .logoWrap {
+            margin-top: 5rem;
+            margin-bottom: 5rem;
+
+            .logoText {
+                color: #3c3c3c;
+                margin-top: 2rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                font-size: 2.2rem;
+            }
+        }
+
+        .contentMain {
+            color: #3c3c3c;
+            font-weight: 600;
+            font-size: 0.8rem;
+
+            h2 {
+                font-size: 1.8rem;
+                font-weight: 600;
+                margin-bottom: 0;
+            }
+        }
+    }
+}

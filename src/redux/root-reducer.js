@@ -13,7 +13,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
     commonParams : commonReducer,
-    services : servicesReducer
+    serviceList : servicesReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

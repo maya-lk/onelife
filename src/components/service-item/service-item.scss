@@ -1,0 +1,33 @@
+.serviceItem{
+    .item {
+        position: relative;
+
+        .imgWrap {
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            min-height: 350px;
+            margin-bottom: 1.5rem;
+        }
+
+        h4 {
+            color: #3c3c3c;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 0;
+        }
+
+        h5 {
+            color: #fcc900;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .content {
+            margin-top: 1.5rem;
+            color: #3c3c3c;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+    }
+}

@@ -1,0 +1,92 @@
+@import '~antd/dist/antd.css';
+.consultationsWrap{
+    .container{
+        max-width: 1380px;
+
+        .consultation {
+            width: 60%;
+            background-color: #fec901;
+            padding: 2rem;
+    
+            h2 {
+                color: #3c3c3c;
+                text-transform: uppercase;
+                font-weight: 700;
+                font-size: 3rem;
+                margin-bottom: 0;
+            }
+    
+            h3 {
+                color: #fff;
+                font-weight: 600;
+                text-transform: uppercase;
+                font-size: 1rem;
+            }
+    
+            .consultationCont {
+                margin-top: 3rem;
+
+                h4 {
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    color: #3c3c3a;
+                    font-size: 1.7rem;
+                }
+
+                .calenderWrap {
+                    width: 56%;
+                    padding-right: 1rem;
+
+                    .react-calendar {
+                        width: 100%;
+                        border: none;
+                        border-radius: 8px;                    
+                    }
+                }
+
+                .fieldWrap {
+                    width: 44%;
+                    padding-left: 1rem;
+
+                    label {
+                        text-transform: uppercase;
+                        font-size: 0.9rem;
+                        font-weight: 600;
+                    }
+
+                    .form-control {
+                        border-radius: 0;
+                        border: none;
+                        box-shadow: 0 0 0;
+                        outline: none;
+                    }
+
+                    .btnWrap {
+                        margin-top: 2rem;
+
+                        .btn.submitBtn {
+                            width: 100%;
+                            color: #fff;
+                            background-color: #181818;
+                            border-radius: 0;
+                            text-transform: uppercase;
+                            font-weight: 600;
+                            padding: 0.75rem 0;
+                            cursor: pointer;
+                        }
+                    }
+
+                    .ant-time-picker {
+                        width: 100%;
+
+                        .ant-time-picker-input {
+                            border: none;
+                            border-radius: 0;
+                            height: 39px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

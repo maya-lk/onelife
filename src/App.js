@@ -1,10 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 
 import API from './lib/api';
 
 import { setSiteLogo , setLogoSubtext , setMainImage , setMainContent , setAddress , setEmail , setContactNo } from './redux/common/common.actions';
 import { setServices } from './redux/services/services.actions';
+
+import Home from './pages/home/home.component';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -37,7 +40,9 @@ class App extends React.Component {
 
   render(){
     return (
-      <div className="appWrapper"></div>
+      <div className="appWrapper">
+        <Route path="/" exact component={Home} />
+      </div>
     )
   }
 }
