@@ -1,5 +1,6 @@
 {
-  "name": "react-wordpress-template",
+  "name": "onelife",
+  "homepage": "https://mayaprojects.net/sudaudaya",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
