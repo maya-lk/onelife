@@ -28,6 +28,7 @@
 
             .navbar-nav {
                 flex-direction: unset;
+                align-items: center;
 
                 .nav-link {
                     padding: 0 1rem;
@@ -38,6 +39,11 @@
 
                     &:hover {
                         color: #343536;
+                    }
+
+                    &.btnLink {
+                        background-color: #343536;
+                        padding: 0.5rem 1rem;
                     }
                 }
             }

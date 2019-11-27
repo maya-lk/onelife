@@ -18,7 +18,7 @@ const MainBanner = ({ siteLogo , logoSubtext , mainImage , mainContent , ownersB
                         <li className="nav-item"><a className="nav-link" href="#contact">Contact</a></li>
                         {
                             (ownersBuilderPdf)?
-                            <li className="nav-item"><a className="nav-link" href={ownersBuilderPdf.url} download target="_blank" rel="noopener noreferrer">Owners Builder PDF</a></li>
+                            <li className="nav-item"><a className="nav-link btnLink" href={ownersBuilderPdf.url} download target="_blank" rel="noopener noreferrer">Owners Builder PDF</a></li>
                             : ''
                         }                        
                     </ul>
