@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectSiteLogo , selectLogoSubtext , selectMainContent , selectMainImage } from '../../redux/common/common.selectors';
+import { selectSiteLogo , selectLogoSubtext , selectMainContent , selectMainImage , selectOwnersBuilderPdf } from '../../redux/common/common.selectors';
 
 import './main-banner.styles.scss';
 
-const MainBanner = ({ siteLogo , logoSubtext , mainImage , mainContent }) => (
+const MainBanner = ({ siteLogo , logoSubtext , mainImage , mainContent , ownersBuilderPdf }) => (
     <div className="mainBannerWrap">
         <div className="container d-flex p-0">
             <div className="mainBanner" style={{ backgroundImage : `url(${mainImage})` }} />
@@ -16,6 +16,11 @@ const MainBanner = ({ siteLogo , logoSubtext , mainImage , mainContent }) => (
                         <li className="nav-item"><a className="nav-link" href="#home">Home</a></li>
                         <li className="nav-item"><a className="nav-link" href="#services">Services</a></li>
                         <li className="nav-item"><a className="nav-link" href="#contact">Contact</a></li>
+                        {
+                            (ownersBuilderPdf)?
+                            <li className="nav-item"><a className="nav-link" href={ownersBuilderPdf.url} download target="_blank">Owners Builder PDF</a></li>
+                            : ''
+                        }                        
                     </ul>
                 </nav>
                 <div className="logoWrap">
@@ -32,7 +37,8 @@ const mapStateToProps = createStructuredSelector({
     siteLogo : selectSiteLogo, 
     logoSubtext : selectLogoSubtext, 
     mainContent : selectMainContent, 
-    mainImage : selectMainImage
+    mainImage : selectMainImage,
+    ownersBuilderPdf : selectOwnersBuilderPdf
 })
 
 export default connect(mapStateToProps)(MainBanner);
