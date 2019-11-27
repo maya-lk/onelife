@@ -1,6 +1,9 @@
 import React from 'react';
-import Calendar from 'react-calendar';
-import { TimePicker } from 'antd';
+import { TimePicker , DatePicker } from 'antd';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+import { selectGoogleCalender } from '../../redux/common/common.selectors';
 
 import ContactDetails from '../contact-details/contact-details.component';
 
@@ -8,7 +11,7 @@ import './consultations.styles.scss';
 
 class Consultations extends React.Component {
     state = {
-        date : new Date(),
+        date : null,
         name : '',
         time : '12:00'
     }
@@ -19,17 +22,22 @@ class Consultations extends React.Component {
         this.setState({ [name] : value });
     }
 
+    handleDateChange = (date, dateString) => {
+        this.setState({ date : date });
+    }
+
     handleSubmit = async event => {
         event.preventDefault();
 
         //const { date , name , time } = this.state;
 
     }
+    
 
     render(){
-        const { date , name } = this.state;
+        const { name } = this.state;
+        const { googleCalender } = this.props;
 
-        console.log('date' , date);
         return(
             <div className="consultationsWrap">
                 <div className="container d-flex flex-wrap p-0">
@@ -39,13 +47,7 @@ class Consultations extends React.Component {
                         <div className="consultationCont">
                             <h4>Book your consultation:</h4>
                             <form className="googleCalenderWrap d-flex flex-wrap" onSubmit={this.handleSubmit}>
-                                <div className="calenderWrap">
-                                    <Calendar
-                                        onChange={date => this.setState({ date })}
-                                        activeStartDate={date}
-                                        defaultValue={date}
-                                    />
-                                </div>
+                                <div className="calenderWrap" dangerouslySetInnerHTML={{__html: googleCalender }} />
                                 <div className="fieldWrap">
                                     <div className="form-group">
                                         <label htmlFor="fname">Name</label>
@@ -62,13 +64,7 @@ class Consultations extends React.Component {
                                     <div className="d-flex row">
                                         <div className="form-group col-6">
                                             <label htmlFor="date">Date</label>
-                                            <input 
-                                                type="text"
-                                                id="date"
-                                                className="form-control"
-                                                name="date"
-                                                value={date}
-                                            />
+                                            <DatePicker onChange={this.handleDateChange} />
                                         </div>
                                         <div className="form-group col-6">
                                             <label htmlFor="time">Time</label>
@@ -96,4 +92,8 @@ class Consultations extends React.Component {
     }
 }
 
-export default Consultations;
+const mapStateToProps = createStructuredSelector({
+    googleCalender : selectGoogleCalender
+})
+
+export default connect(mapStateToProps)(Consultations);

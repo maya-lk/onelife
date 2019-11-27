@@ -37,10 +37,10 @@
                     width: 56%;
                     padding-right: 1rem;
 
-                    .react-calendar {
+                    iframe {
                         width: 100%;
-                        border: none;
-                        border-radius: 8px;                    
+                        height: auto;
+                        min-height: 400px;
                     }
                 }
 
@@ -84,6 +84,12 @@
                             border-radius: 0;
                             height: 39px;
                         }
+                    }
+
+                    .ant-calendar-picker-input.ant-input {
+                        height: 39px;
+                        border: none;
+                        border-radius: 0;
                     }
                 }
             }
