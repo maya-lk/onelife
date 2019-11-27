@@ -67,5 +67,20 @@
                 margin-bottom: 0;
             }
         }
+
+        .linkedingProfile{
+            margin-top: 3rem;
+            
+            .btn {
+                box-shadow: 0 0 0;
+                border: none;
+                border-radius: 0;
+                background-color: #016fac;
+                color: #fff;
+                font-weight: 400;
+                font-size: 0.9rem;
+                padding: 0.75rem 2rem;
+            }
+        }
     }
 }

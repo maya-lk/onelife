@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectSiteLogo , selectLogoSubtext , selectMainContent , selectMainImage , selectOwnersBuilderPdf } from '../../redux/common/common.selectors';
+import { selectSiteLogo , selectLogoSubtext , selectMainContent , selectMainImage , selectOwnersBuilderPdf , selectLinkedinLink } from '../../redux/common/common.selectors';
 
 import './main-banner.styles.scss';
 
-const MainBanner = ({ siteLogo , logoSubtext , mainImage , mainContent , ownersBuilderPdf }) => (
+const MainBanner = ({ siteLogo , logoSubtext , mainImage , mainContent , ownersBuilderPdf , linkedinLink }) => (
     <div className="mainBannerWrap">
         <div className="container d-flex p-0">
             <div className="mainBanner" style={{ backgroundImage : `url(${mainImage})` }} />
@@ -18,7 +18,7 @@ const MainBanner = ({ siteLogo , logoSubtext , mainImage , mainContent , ownersB
                         <li className="nav-item"><a className="nav-link" href="#contact">Contact</a></li>
                         {
                             (ownersBuilderPdf)?
-                            <li className="nav-item"><a className="nav-link" href={ownersBuilderPdf.url} download target="_blank">Owners Builder PDF</a></li>
+                            <li className="nav-item"><a className="nav-link" href={ownersBuilderPdf.url} download target="_blank" rel="noopener noreferrer">Owners Builder PDF</a></li>
                             : ''
                         }                        
                     </ul>
@@ -28,6 +28,16 @@ const MainBanner = ({ siteLogo , logoSubtext , mainImage , mainContent , ownersB
                     <div className="logoText" dangerouslySetInnerHTML={{__html: logoSubtext }} />
                 </div>
                 <div className="contentMain" dangerouslySetInnerHTML={{__html: mainContent }} />
+                {
+                    (linkedinLink)?
+                    (
+                        <div className="linkedingProfile">
+                            <a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="btn"><i class="fab fa-linkedin-in"></i> View Profile</a>
+                        </div>
+                    )
+                    : ''
+                }
+                
             </div>
         </div>
     </div>
@@ -38,7 +48,8 @@ const mapStateToProps = createStructuredSelector({
     logoSubtext : selectLogoSubtext, 
     mainContent : selectMainContent, 
     mainImage : selectMainImage,
-    ownersBuilderPdf : selectOwnersBuilderPdf
+    ownersBuilderPdf : selectOwnersBuilderPdf,
+    linkedinLink : selectLinkedinLink
 })
 
 export default connect(mapStateToProps)(MainBanner);
