@@ -61,3 +61,13 @@ export const selectGoogleCalender = createSelector(
     [selectCommonAPI],
     (commonParams) => commonParams.googleCalender
 );
+
+export const selectBioImage = createSelector(
+    [selectCommonAPI],
+    (commonParams) => commonParams.bioImage
+);
+
+export const selectCalenderAPI = createSelector(
+    [selectCommonAPI],
+    (commonParams) => commonParams.calenderAPI
+);

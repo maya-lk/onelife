@@ -13,6 +13,8 @@ const INITIAL_STATE = {
     ownersBuilderPdf : null,
     menus : null,
     googleCalender : null,
+    bioImage : null,
+    calenderAPI : null,
 }
 
 const commonReducer = ( state = INITIAL_STATE , action ) => {
@@ -76,6 +78,16 @@ const commonReducer = ( state = INITIAL_STATE , action ) => {
             return{
                 ...state,
                 googleCalender : action.payload
+            }
+        case commonActionTypes.SET_BIO_IMAGE:
+            return{
+                ...state,
+                bioImage : action.payload
+            }
+        case commonActionTypes.SET_CALENDER_API:
+            return{
+                ...state , 
+                calenderAPI : action.payload
             }
         default:
             return state;

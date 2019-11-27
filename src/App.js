@@ -16,7 +16,9 @@ import {
   setBioSection , 
   setOwnersBuilderPdf , 
   setGoogleCalender , 
-  setMenus
+  setMenus , 
+  setBioImage , 
+  setCalenderAPI
 } from './redux/common/common.actions';
 import { setServices } from './redux/services/services.actions';
 
@@ -42,7 +44,9 @@ class App extends React.Component {
       setBioSection , 
       setOwnersBuilderPdf , 
       setGoogleCalender , 
-      setMenus
+      setMenus , 
+      setBioImage , 
+      setCalenderAPI
     } = this.props;
 
     //Common API
@@ -60,6 +64,8 @@ class App extends React.Component {
       setOwnersBuilderPdf(response.data.ownersBuilderPdf);
       setGoogleCalender(response.data.googleCalender);
       setMenus(response.data.menus);
+      setBioImage(response.data.bioImage);
+      setCalenderAPI(response.data.calenderAPI);
     });
 
     //Set Services
@@ -93,6 +99,8 @@ const mapDispatchToProps = dispatch => ({
   setOwnersBuilderPdf : (ownersBuilderPdf) => dispatch(setOwnersBuilderPdf(ownersBuilderPdf)), 
   setGoogleCalender : (googleCalender) => dispatch(setGoogleCalender(googleCalender)), 
   setMenus : (menus) => dispatch(setMenus(menus)),
+  setBioImage : (bioImage) => dispatch(setBioImage(bioImage)),
+  setCalenderAPI : (calenderAPI) => dispatch(setCalenderAPI(calenderAPI)),
 });
 
 export default connect(null , mapDispatchToProps)(App);

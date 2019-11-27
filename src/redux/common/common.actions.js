@@ -59,3 +59,13 @@ export const setGoogleCalender = googleCalender => ({
     type : commonActionTypes.SET_GOOGLE_CALENDER,
     payload : googleCalender
 });
+
+export const setBioImage = bioImage => ({
+    type : commonActionTypes.SET_BIO_IMAGE,
+    payload : bioImage
+});
+
+export const setCalenderAPI = calenderAPI => ({
+    type : commonActionTypes.SET_CALENDER_API,
+    payload : calenderAPI
+});
