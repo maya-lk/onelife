@@ -4,7 +4,20 @@ import { Route } from 'react-router-dom';
 
 import API from './lib/api';
 
-import { setSiteLogo , setLogoSubtext , setMainImage , setMainContent , setAddress , setEmail , setContactNo } from './redux/common/common.actions';
+import { 
+  setSiteLogo , 
+  setLogoSubtext , 
+  setMainImage , 
+  setMainContent , 
+  setAddress , 
+  setEmail , 
+  setContactNo ,
+  setLinkedinLink , 
+  setBioSection , 
+  setOwnersBuilderPdf , 
+  setGoogleCalender , 
+  setMenus
+} from './redux/common/common.actions';
 import { setServices } from './redux/services/services.actions';
 
 import Home from './pages/home/home.component';
@@ -16,7 +29,21 @@ class App extends React.Component {
 
   componentDidMount(){
 
-    const { setSiteLogo , setLogoSubtext , setMainImage , setMainContent , setAddress , setEmail , setContactNo , setServices } = this.props;
+    const { 
+      setSiteLogo , 
+      setLogoSubtext , 
+      setMainImage , 
+      setMainContent , 
+      setAddress , 
+      setEmail , 
+      setContactNo , 
+      setServices ,
+      setLinkedinLink , 
+      setBioSection , 
+      setOwnersBuilderPdf , 
+      setGoogleCalender , 
+      setMenus
+    } = this.props;
 
     //Common API
     API.get('common')
@@ -28,6 +55,11 @@ class App extends React.Component {
       setAddress(response.data.address);
       setEmail(response.data.email);
       setContactNo(response.data.contactNo);
+      setLinkedinLink(response.data.linkedinLink);
+      setBioSection(response.data.bioSection);
+      setOwnersBuilderPdf(response.data.ownersBuilderPdf);
+      setGoogleCalender(response.data.googleCalender);
+      setMenus(response.data.menus);
     });
 
     //Set Services
@@ -56,6 +88,11 @@ const mapDispatchToProps = dispatch => ({
   setEmail : (email) => dispatch(setEmail(email)),
   setContactNo : (contactNo) => dispatch(setContactNo(contactNo)),
   setServices : (services) => dispatch(setServices(services)),
+  setLinkedinLink : (linkedinLink) => dispatch(setLinkedinLink(linkedinLink)), 
+  setBioSection : (bioSection) => dispatch(setBioSection(bioSection)), 
+  setOwnersBuilderPdf : (ownersBuilderPdf) => dispatch(setOwnersBuilderPdf(ownersBuilderPdf)), 
+  setGoogleCalender : (googleCalender) => dispatch(setGoogleCalender(googleCalender)), 
+  setMenus : (menus) => dispatch(setMenus(menus)),
 });
 
 export default connect(null , mapDispatchToProps)(App);
