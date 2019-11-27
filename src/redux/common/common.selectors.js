@@ -36,3 +36,28 @@ export const selectContactNo = createSelector(
     [selectCommonAPI],
     (commonParams) => commonParams.contactNo
 );
+
+export const selectLinkedinLink = createSelector(
+    [selectCommonAPI],
+    (commonParams) => commonParams.linkedinLink
+);
+
+export const selectBioSection = createSelector(
+    [selectCommonAPI],
+    (commonParams) => commonParams.bioSection
+);
+
+export const selectOwnersBuilderPdf = createSelector(
+    [selectCommonAPI],
+    (commonParams) => commonParams.ownersBuilderPdf
+);
+
+export const selectMenus = createSelector(
+    [selectCommonAPI],
+    (commonParams) => commonParams.menus
+);
+
+export const selectGoogleCalender = createSelector(
+    [selectCommonAPI],
+    (commonParams) => commonParams.googleCalender
+);

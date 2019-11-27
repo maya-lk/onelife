@@ -8,6 +8,11 @@ const INITIAL_STATE = {
     address: null,
     email : null,
     contactNo : null,
+    linkedinLink : null,
+    bioSection : null,
+    ownersBuilderPdf : null,
+    menus : null,
+    googleCalender : null,
 }
 
 const commonReducer = ( state = INITIAL_STATE , action ) => {
@@ -46,6 +51,31 @@ const commonReducer = ( state = INITIAL_STATE , action ) => {
             return{
                 ...state,
                 contactNo : action.payload
+            }
+        case commonActionTypes.SET_LINKEDIN_URL:
+            return{
+                ...state,
+                linkedinLink : action.payload
+            }
+        case commonActionTypes.SET_BIO_SECTION:
+            return{
+                ...state,
+                bioSection : action.payload
+            }
+        case commonActionTypes.SET_OWNER_PDF:
+            return{
+                ...state,
+                ownersBuilderPdf : action.payload
+            }
+        case commonActionTypes.SET_MENUS:
+            return{
+                ...state,
+                menus : action.payload
+            }
+        case commonActionTypes.SET_GOOGLE_CALENDER:
+            return{
+                ...state,
+                googleCalender : action.payload
             }
         default:
             return state;

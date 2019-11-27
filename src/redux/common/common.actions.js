@@ -34,3 +34,28 @@ export const setContactNo = contactNo => ({
     type : commonActionTypes.SET_CONTACT_NO,
     payload : contactNo
 });
+
+export const setLinkedinLink = linkedinLink => ({
+    type : commonActionTypes.SET_LINKEDIN_URL,
+    payload : linkedinLink
+});
+
+export const setBioSection = bioSection => ({
+    type : commonActionTypes.SET_BIO_SECTION,
+    payload : bioSection
+});
+
+export const setMenus = menus => ({
+    type : commonActionTypes.SET_MENUS,
+    payload : menus
+});
+
+export const setOwnersBuilderPdf = ownersBuilderPdf => ({
+    type : commonActionTypes.SET_OWNER_PDF,
+    payload : ownersBuilderPdf
+});
+
+export const setGoogleCalender = googleCalender => ({
+    type : commonActionTypes.SET_GOOGLE_CALENDER,
+    payload : googleCalender
+});
