@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import FullCalendar from '@fullcalendar/react';
 import googleCalendarPlugin from '@fullcalendar/google-calendar';
-import dayGridPlugin from '@fullcalendar/daygrid'
+import dayGridPlugin from '@fullcalendar/daygrid';
+
+import API from '../../lib/api';
 
 import { selectGoogleCalender , selectCalenderAPI } from '../../redux/common/common.selectors';
 
@@ -17,8 +19,10 @@ import '@fullcalendar/daygrid/main.css';
 class Consultations extends React.Component {
     state = {
         date : null,
-        name : '',
-        time : '12:00'
+        fname : '',
+        time : '12:00',
+        error: null,
+        success: null
     }
 
     handleChange = event => {
@@ -34,12 +38,34 @@ class Consultations extends React.Component {
     handleSubmit = async event => {
         event.preventDefault();
 
-        //const { date , name , time } = this.state;
+        const { date , fname , time } = this.state;
 
+        if( date === '' || fname === '' || time === '' ){
+            this.setState({ error : 'All fields required.' });
+        }else{
+            const formData = new FormData();
+            formData.append('date',date);
+            formData.append('fname',fname);
+            formData.append('time',time);
+
+            API.post("booking", formData)
+            .then(response => {
+                //console.log('response' , response.data);
+                if( response.data.status ){
+                    this.setState({ success: response.data.msg });
+                }else{
+                    this.setState({ error : response.data.msg });
+                }
+
+                this.setState({ date : '' , fname : '' , time : ''  });
+            }).catch(err => {
+                //console.log('err' , err);
+            });
+        }
     }  
 
     render(){
-        const { name } = this.state;
+        const { fname , error , success } = this.state;
         const { googleCalender , calenderAPI } = this.props;
 
         return(
@@ -51,6 +77,13 @@ class Consultations extends React.Component {
                         <div className="consultationCont">
                             <h4>Book your consultation:</h4>
                             <form className="googleCalenderWrap d-flex flex-wrap" onSubmit={this.handleSubmit}>
+                                {
+                                    (error)?
+                                    <div className="alert alert-danger" role="alert">{error}</div>
+                                    : (success)?
+                                    <div className="alert alert-success" role="alert">{success}</div>
+                                    : ''
+                                }
                                 <div className="calenderWrap" >
                                     {
                                         (calenderAPI && googleCalender)?
@@ -72,7 +105,7 @@ class Consultations extends React.Component {
                                             id="fname"
                                             className="form-control"
                                             name="fname"
-                                            value={name}
+                                            value={fname}
                                             onChange={this.handleChange}
                                         />
                                     </div>
