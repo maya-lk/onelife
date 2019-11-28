@@ -11,3 +11,15 @@
         }
     }
 }
+
+@media screen and ( max-width: 767px ){
+
+    .bioSectionWrap {
+        .container {
+            .imageWrap {
+                min-height: 300px;    
+            }
+        }
+    }
+
+}

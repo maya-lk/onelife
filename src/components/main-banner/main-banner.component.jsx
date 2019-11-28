@@ -1,28 +1,41 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import {isMobile} from 'react-device-detect';
 
 import { selectSiteLogo , selectLogoSubtext , selectMainContent , selectMainImage , selectOwnersBuilderPdf , selectLinkedinLink } from '../../redux/common/common.selectors';
+
+import MobileMenuButton from '../mobile-menu-button/mobile-menu-button.component';
 
 import './main-banner.styles.scss';
 
 const MainBanner = ({ siteLogo , logoSubtext , mainImage , mainContent , ownersBuilderPdf , linkedinLink }) => (
     <div className="mainBannerWrap">
         <div className="container d-flex p-0">
+            {
+                (isMobile)?
+                <MobileMenuButton/>
+                : ''
+            }
             <div className="mainBanner" style={{ backgroundImage : `url(${mainImage})` }} />
             <div className="mainContent">
-                <nav className="navigationWrap navbar">
-                    <ul className="navbar-nav">
-                        <li className="nav-item"><a className="nav-link" href="#home">Home</a></li>
-                        <li className="nav-item"><a className="nav-link" href="#services">Services</a></li>
-                        <li className="nav-item"><a className="nav-link" href="#contact">Contact</a></li>
-                        {
-                            (ownersBuilderPdf)?
-                            <li className="nav-item"><a className="nav-link btnLink" href={ownersBuilderPdf.url} download target="_blank" rel="noopener noreferrer">Owners Builder PDF</a></li>
-                            : ''
-                        }                        
-                    </ul>
-                </nav>
+                {
+                    (!isMobile)?
+                    <nav className="navigationWrap navbar">
+                        <ul className="navbar-nav">
+                            <li className="nav-item"><a className="nav-link" href="#home">Home</a></li>
+                            <li className="nav-item"><a className="nav-link" href="#services">Services</a></li>
+                            <li className="nav-item"><a className="nav-link" href="#contact">Contact</a></li>
+                            {
+                                (ownersBuilderPdf)?
+                                <li className="nav-item"><a className="nav-link btnLink" href={ownersBuilderPdf.url} download target="_blank" rel="noopener noreferrer">Owners Builder PDF</a></li>
+                                : ''
+                            }                        
+                        </ul>
+                    </nav>
+                    : ''
+                }
+                
                 <div className="logoWrap">
                     <img src={siteLogo} alt="Site Logo"/>
                     <div className="logoText" dangerouslySetInnerHTML={{__html: logoSubtext }} />

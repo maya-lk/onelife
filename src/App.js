@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
+import {isMobile} from 'react-device-detect';
 
 import API from './lib/api';
 
@@ -23,6 +24,7 @@ import {
 import { setServices } from './redux/services/services.actions';
 
 import Home from './pages/home/home.component';
+import MobileMenu from './components/mobile-menu/mobile-menu.component';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -80,6 +82,11 @@ class App extends React.Component {
     return (
       <div className="appWrapper">
         <Route path="/" exact component={Home} />
+        {
+          (isMobile)?
+          <MobileMenu/>
+          : ''
+        }
       </div>
     )
   }

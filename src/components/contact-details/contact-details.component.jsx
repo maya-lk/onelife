@@ -24,7 +24,7 @@ const ContactDetails = ({ address , email , contactNo , menus }) => (
         <ul className="navbar-nav">
             {
                 (menus)?
-                menus.map( menu => <li key={menu} className="nav-item"><a className="nav-link" href={menu.link} target="_blank" rel="noopener noreferrer">{menu.name}</a></li>)
+                menus.map( menu => <li key={menu.name} className="nav-item"><a className="nav-link" href={menu.link} target="_blank" rel="noopener noreferrer">{menu.name}</a></li>)
                 : ''
             }                       
         </ul>
