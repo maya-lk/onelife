@@ -32,7 +32,7 @@ const MainBanner = ({ siteLogo , logoSubtext , mainImage , mainContent , ownersB
                     (linkedinLink)?
                     (
                         <div className="linkedingProfile">
-                            <a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="btn"><i className="fab fa-linkedin-in"></i> View Profile</a>
+                            <a href={linkedinLink.url} target="_blank" rel="noopener noreferrer" className="btn"><i className="fab fa-linkedin-in"></i> View Profile</a>
                         </div>
                     )
                     : ''
