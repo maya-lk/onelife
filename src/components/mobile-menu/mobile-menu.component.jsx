@@ -18,12 +18,7 @@ const MobileMenu = ({ ownersBuilderPdf , mobileHidden , toggleMobileHidden }) =>
             <ul className="navbar-nav">
                 <li className="nav-item"><a className="nav-link" href="#home" onClick={toggleMobileHidden}>Home</a></li>
                 <li className="nav-item"><a className="nav-link" href="#services" onClick={toggleMobileHidden}>Services</a></li>
-                <li className="nav-item"><a className="nav-link" href="#contact" onClick={toggleMobileHidden}>Contact</a></li>
-                {
-                    (ownersBuilderPdf)?
-                    <li className="nav-item"><a className="nav-link btnLink" href={ownersBuilderPdf.url} download target="_blank" rel="noopener noreferrer">Owners Builder PDF</a></li>
-                    : ''
-                } 
+                <li className="nav-item"><a className="nav-link" href="#contact" onClick={toggleMobileHidden}>Contact</a></li> 
             </ul>
         </nav>
     </div>

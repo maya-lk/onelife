@@ -11,30 +11,27 @@ import './main-banner.styles.scss';
 
 const MainBanner = ({ siteLogo , logoSubtext , mainImage , mainContent , ownersBuilderPdf , linkedinLink }) => (
     <div className="mainBannerWrap">
-        <div className="container d-flex p-0">
+        <div className="container d-flex flex-wrap p-0">
             {
                 (isMobile)?
                 <MobileMenuButton/>
                 : ''
             }
+
+            {
+                (!isMobile)?
+                <nav className="navigationWrap navbar">
+                    <ul className="navbar-nav">
+                        <li className="nav-item"><a className="nav-link" href="#home">Home</a></li>
+                        <li className="nav-item"><a className="nav-link" href="#services">Services</a></li>
+                        <li className="nav-item"><a className="nav-link" href="#contact">Contact</a></li>                 
+                    </ul>
+                </nav>
+                : ''
+            }
+
             <div className="mainBanner" style={{ backgroundImage : `url(${mainImage})` }} />
-            <div className="mainContent">
-                {
-                    (!isMobile)?
-                    <nav className="navigationWrap navbar">
-                        <ul className="navbar-nav">
-                            <li className="nav-item"><a className="nav-link" href="#home">Home</a></li>
-                            <li className="nav-item"><a className="nav-link" href="#services">Services</a></li>
-                            <li className="nav-item"><a className="nav-link" href="#contact">Contact</a></li>
-                            {
-                                (ownersBuilderPdf)?
-                                <li className="nav-item"><a className="nav-link btnLink" href={ownersBuilderPdf.url} download target="_blank" rel="noopener noreferrer">Owners Builder PDF</a></li>
-                                : ''
-                            }                        
-                        </ul>
-                    </nav>
-                    : ''
-                }
+            <div className="mainContent">               
                 
                 <div className="logoWrap">
                     <img src={siteLogo} alt="Site Logo"/>
@@ -45,12 +42,16 @@ const MainBanner = ({ siteLogo , logoSubtext , mainImage , mainContent , ownersB
                     (linkedinLink)?
                     (
                         <div className="linkedingProfile">
-                            <a href={linkedinLink.url} target="_blank" rel="noopener noreferrer" className="btn"><i className="fab fa-linkedin-in"></i> View Profile</a>
+                            <a href={linkedinLink.url} target="_blank" rel="noopener noreferrer" className="btn">View Profile</a>
                         </div>
                     )
                     : ''
                 }
-                
+                {
+                    (ownersBuilderPdf)?
+                    <div className="btnWrap"><a className="btnLink" href={ownersBuilderPdf.url} download target="_blank" rel="noopener noreferrer">Owners Builder PDF</a></div>
+                    : ''
+                } 
             </div>
         </div>
     </div>

@@ -1,33 +1,38 @@
 .serviceItem{
     .item {
         position: relative;
+        display: flex;
+        justify-content: space-between;
 
         .imgWrap {
-            width: 100%;
+            width: 50%;
             background-size: cover;
             background-position: center;
             min-height: 350px;
-            margin-bottom: 1.5rem;
         }
 
-        h4 {
-            color: #3c3c3c;
-            font-weight: 700;
-            font-size: 1.3rem;
-            margin-bottom: 0;
-        }
+        .contentWrap{
+            width: 47%;
 
-        h5 {
-            color: #fcc900;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .content {
-            margin-top: 1.5rem;
-            color: #3c3c3c;
-            font-weight: 600;
-            font-size: 0.8rem;
+            h4 {
+                color: #3c3c3c;
+                font-weight: 700;
+                font-size: 1.3rem;
+                margin-bottom: 0;
+            }
+    
+            h5 {
+                color: #fcc900;
+                font-size: 0.8rem;
+                font-weight: 600;
+            }
+    
+            .content {
+                margin-top: 1.5rem;
+                color: #3c3c3c;
+                font-weight: 600;
+                font-size: 0.8rem;
+            }
         }
     }
 }
@@ -35,7 +40,20 @@
 @media screen and ( max-width: 767px ){
 
     .serviceItem {
-        margin-bottom: 1.5rem;
+        padding: 0 1rem;
+
+        .item {
+            flex-wrap: wrap;
+
+            .imgWrap {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+
+            .contentWrap {
+                width: 100%;
+            }
+        }
     }
 
 }

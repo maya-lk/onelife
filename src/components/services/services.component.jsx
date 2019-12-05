@@ -11,7 +11,7 @@ import './services.styles.scss';
 const OurServices = ({ services }) => (
     <div className="ourServicesWrap" id="services">
         <div className="container">
-            <h2 className="text-center">Our Services</h2>
+            <h2 className="text-center">Our Service</h2>
             <div className="servicesWrap d-flex flex-wrap row">
                 {
                     (services)?
