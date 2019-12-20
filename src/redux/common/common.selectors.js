@@ -71,3 +71,13 @@ export const selectCalenderAPI = createSelector(
     [selectCommonAPI],
     (commonParams) => commonParams.calenderAPI
 );
+
+export const selectZoomID = createSelector(
+    [selectCommonAPI],
+    (commonParams) => commonParams.zoomID
+);
+
+export const selectZoomName = createSelector(
+    [selectCommonAPI],
+    (commonParams) => commonParams.zoomName
+);

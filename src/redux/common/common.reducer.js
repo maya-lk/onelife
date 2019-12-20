@@ -15,6 +15,8 @@ const INITIAL_STATE = {
     googleCalender : null,
     bioImage : null,
     calenderAPI : null,
+    zoomID : null,
+    zoomName : null,
 }
 
 const commonReducer = ( state = INITIAL_STATE , action ) => {
@@ -88,6 +90,16 @@ const commonReducer = ( state = INITIAL_STATE , action ) => {
             return{
                 ...state , 
                 calenderAPI : action.payload
+            }
+        case commonActionTypes.SET_ZOOM_ID:
+            return{
+                ...state ,
+                zoomID : action.payload
+            }
+        case commonActionTypes.SET_ZOOM_NAME:
+            return{
+                ...state,
+                zoomName : action.payload
             }
         default:
             return state;

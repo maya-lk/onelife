@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import {isMobile} from 'react-device-detect';
 
-import { selectSiteLogo , selectLogoSubtext , selectMainContent , selectMainImage , selectOwnersBuilderPdf , selectLinkedinLink } from '../../redux/common/common.selectors';
+import { selectSiteLogo , selectLogoSubtext , selectMainContent , selectMainImage , selectLinkedinLink } from '../../redux/common/common.selectors';
 
 import MobileMenuButton from '../mobile-menu-button/mobile-menu-button.component';
 
 import './main-banner.styles.scss';
 
-const MainBanner = ({ siteLogo , logoSubtext , mainImage , mainContent , ownersBuilderPdf , linkedinLink }) => (
+const MainBanner = ({ siteLogo , logoSubtext , mainImage , mainContent  , linkedinLink }) => (
     <div className="mainBannerWrap">
         <div className="container d-flex flex-wrap p-0">
             {
@@ -46,12 +46,7 @@ const MainBanner = ({ siteLogo , logoSubtext , mainImage , mainContent , ownersB
                         </div>
                     )
                     : ''
-                }
-                {
-                    (ownersBuilderPdf)?
-                    <div className="btnWrap"><a className="btnLink" href={ownersBuilderPdf.url} download target="_blank" rel="noopener noreferrer">Owners Builder PDF</a></div>
-                    : ''
-                } 
+                }                 
             </div>
         </div>
     </div>
@@ -62,7 +57,6 @@ const mapStateToProps = createStructuredSelector({
     logoSubtext : selectLogoSubtext, 
     mainContent : selectMainContent, 
     mainImage : selectMainImage,
-    ownersBuilderPdf : selectOwnersBuilderPdf,
     linkedinLink : selectLinkedinLink
 })
 

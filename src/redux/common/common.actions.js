@@ -69,3 +69,13 @@ export const setCalenderAPI = calenderAPI => ({
     type : commonActionTypes.SET_CALENDER_API,
     payload : calenderAPI
 });
+
+export const setZoomID = zoomID => ({
+    type : commonActionTypes.SET_ZOOM_ID,
+    payload : zoomID
+});
+
+export const setZoomName = zoomName => ({
+    type : commonActionTypes.SET_ZOOM_NAME,
+    payload : zoomName
+});

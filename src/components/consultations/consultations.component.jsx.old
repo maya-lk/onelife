@@ -2,6 +2,9 @@ import React from 'react';
 import { TimePicker , DatePicker } from 'antd';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import FullCalendar from '@fullcalendar/react';
+import googleCalendarPlugin from '@fullcalendar/google-calendar';
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 import API from '../../lib/api';
 
@@ -10,6 +13,8 @@ import { selectGoogleCalender , selectCalenderAPI } from '../../redux/common/com
 import ContactDetails from '../contact-details/contact-details.component';
 
 import './consultations.styles.scss';
+import '@fullcalendar/core/main.css';
+import '@fullcalendar/daygrid/main.css';
 
 class Consultations extends React.Component {
     state = {
@@ -17,10 +22,7 @@ class Consultations extends React.Component {
         fname : '',
         time : '12:00',
         error: null,
-        success: null,
-        contactNo: null,
-        email : null , 
-        reason : null
+        success: null
     }
 
     handleChange = event => {
@@ -36,18 +38,15 @@ class Consultations extends React.Component {
     handleSubmit = async event => {
         event.preventDefault();
 
-        const { date , fname , time , contactNo , email , reason } = this.state;
+        const { date , fname , time } = this.state;
 
-        if( date === '' || fname === '' || time === '' || contactNo === '' || email === '' || reason === '' ){
+        if( date === '' || fname === '' || time === '' ){
             this.setState({ error : 'All fields required.' });
         }else{
             const formData = new FormData();
             formData.append('date',date);
             formData.append('fname',fname);
             formData.append('time',time);
-            formData.append('contactNo',contactNo);
-            formData.append('email',email);
-            formData.append('reason',reason);
 
             API.post("booking", formData)
             .then(response => {
@@ -66,7 +65,8 @@ class Consultations extends React.Component {
     }  
 
     render(){
-        const { fname , error , success , contactNo , email , reason } = this.state;
+        const { fname , error , success } = this.state;
+        const { googleCalender , calenderAPI } = this.props;
 
         return(
             <div className="consultationsWrap">
@@ -84,6 +84,19 @@ class Consultations extends React.Component {
                                     <div className="alert alert-success" role="alert">{success}</div>
                                     : ''
                                 }
+                                <div className="calenderWrap" >
+                                    {
+                                        (calenderAPI && googleCalender)?
+                                        <FullCalendar
+                                            plugins={[ dayGridPlugin , googleCalendarPlugin ]}
+                                            googleCalendarApiKey={`${calenderAPI}`}
+                                            events={
+                                                { googleCalendarId: `${googleCalender}` , className : 'gcal-event' }
+                                            }
+                                        />
+                                        : ''
+                                    }                         
+                                </div>
                                 <div className="fieldWrap">
                                     <div className="form-group">
                                         <label htmlFor="fname">Name</label>
@@ -94,40 +107,13 @@ class Consultations extends React.Component {
                                             name="fname"
                                             value={fname}
                                             onChange={this.handleChange}
-                                            required
-                                        />
-                                    </div>
-
-                                    <div className="form-group">
-                                        <label htmlFor="contactNo">Contact Number</label>
-                                        <input 
-                                            type="tel"
-                                            id="contactNo"
-                                            className="form-control"
-                                            name="contactNo"
-                                            value={contactNo}
-                                            onChange={this.handleChange}
-                                            required
-                                        />
-                                    </div>
-
-                                    <div className="form-group">
-                                        <label htmlFor="email">Email Address</label>
-                                        <input 
-                                            type="email"
-                                            id="email"
-                                            className="form-control"
-                                            name="email"
-                                            value={email}
-                                            onChange={this.handleChange}
-                                            required
                                         />
                                     </div>
 
                                     <div className="d-flex row">
                                         <div className="form-group col-6">
                                             <label htmlFor="date">Date</label>
-                                            <DatePicker onChange={this.handleDateChange} required />
+                                            <DatePicker onChange={this.handleDateChange} />
                                         </div>
                                         <div className="form-group col-6">
                                             <label htmlFor="time">Time</label>
@@ -135,22 +121,9 @@ class Consultations extends React.Component {
                                                 use12Hours
                                                 onChange={(time, timeString) => this.setState({ time : time })}
                                                 format="HH:mm:ss"
-                                                required
                                             />
                                             
                                         </div>
-                                    </div>
-
-                                    <div className="form-group">
-                                        <label htmlFor="reason">Reason to call back</label>
-                                        <textarea 
-                                            id="reason"
-                                            className="form-control"
-                                            name="reason"
-                                            value={reason}
-                                            onChange={this.handleChange}
-                                            required
-                                        />
                                     </div>
 
                                     <div className="form-group btnWrap">
