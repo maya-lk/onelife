@@ -79,3 +79,8 @@ export const setZoomName = zoomName => ({
     type : commonActionTypes.SET_ZOOM_NAME,
     payload : zoomName
 });
+
+export const setResourcesTitle = resourcesTitle => ({
+    type : commonActionTypes.SET_RESOURCES_TITLE,
+    payload : resourcesTitle
+});

@@ -15,4 +15,5 @@ export const commonActionTypes = {
     SET_CALENDER_API : 'SET_CALENDER_API',
     SET_ZOOM_ID : 'SET_ZOOM_ID',
     SET_ZOOM_NAME : 'SET_ZOOM_NAME',
+    SET_RESOURCES_TITLE : 'SET_RESOURCES_TITLE',
 }

@@ -81,3 +81,8 @@ export const selectZoomName = createSelector(
     [selectCommonAPI],
     (commonParams) => commonParams.zoomName
 );
+
+export const selectResourcesTitle = createSelector(
+    [selectCommonAPI],
+    (commonParams) => commonParams.resourcesTitle
+);

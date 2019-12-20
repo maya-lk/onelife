@@ -17,6 +17,7 @@ const INITIAL_STATE = {
     calenderAPI : null,
     zoomID : null,
     zoomName : null,
+    resourcesTitle : null
 }
 
 const commonReducer = ( state = INITIAL_STATE , action ) => {
@@ -100,6 +101,11 @@ const commonReducer = ( state = INITIAL_STATE , action ) => {
             return{
                 ...state,
                 zoomName : action.payload
+            }
+        case commonActionTypes.SET_RESOURCES_TITLE:
+            return{
+                ...state,
+                resourcesTitle : action.payload
             }
         default:
             return state;
