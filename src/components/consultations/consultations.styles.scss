@@ -52,6 +52,10 @@
                         border: none;
                         box-shadow: 0 0 0;
                         outline: none;
+
+                        &#reason {
+                            min-height: 135px;
+                        }
                     }
 
                     .btnWrap {
