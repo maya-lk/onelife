@@ -26,7 +26,9 @@ import {
   setResourcesTitle , 
   setTopText , 
   setResources , 
-  setMainLoading
+  setMainLoading , 
+  setSiteTitle , 
+  setSiteDescription
 } from './redux/common/common.actions';
 import { setServices } from './redux/services/services.actions';
 
@@ -35,6 +37,7 @@ import { selectMainLoading } from './redux/common/common.selectors';
 import Home from './pages/home/home.component';
 import MobileMenu from './components/mobile-menu/mobile-menu.component';
 import MainLoadingScreen from './components/main-loading/main-loading.component';
+import Metas from './components/metas/metas.component';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -64,7 +67,9 @@ class App extends React.Component {
       setResourcesTitle , 
       setTopText , 
       setResources , 
-      setMainLoading
+      setMainLoading , 
+      setSiteTitle , 
+      setSiteDescription
     } = this.props;
 
     //Common API
@@ -89,6 +94,8 @@ class App extends React.Component {
       setResourcesTitle(response.data.resourcesTitle);
       setTopText(response.data.topTextArea);
       setResources(response.data.resources);
+      setSiteTitle(response.data.siteTitle);
+      setSiteDescription(response.data.siteDescription);
     });
 
     //Set Services
@@ -110,6 +117,7 @@ class App extends React.Component {
     const { mainLoading } = this.props;
     return (
       <div>
+        <Metas/>
         {
           (mainLoading)?
           <MainLoadingScreen/>
@@ -148,7 +156,9 @@ const mapDispatchToProps = dispatch => ({
   setResourcesTitle : (resourcesTitle) => dispatch(setResourcesTitle(resourcesTitle)),
   setTopText : (topText) => dispatch(setTopText(topText)),
   setResources : (resources) => dispatch(setResources(resources)),
-  setMainLoading : () => dispatch(setMainLoading())
+  setMainLoading : () => dispatch(setMainLoading()),
+  setSiteTitle : (siteTitle) => dispatch(setSiteTitle(siteTitle)),
+  setSiteDescription : (siteDescription) => dispatch(setSiteDescription(siteDescription)),
 });
 
 const mapStateToProps = createStructuredSelector({

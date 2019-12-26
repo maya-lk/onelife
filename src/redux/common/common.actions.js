@@ -98,3 +98,13 @@ export const setResources = resources => ({
 export const setMainLoading = () => ({
     type : commonActionTypes.SET_MAIN_LOADING
 });
+
+export const setSiteTitle = siteTitle => ({
+    type : commonActionTypes.SET_SITE_TITLE,
+    payload : siteTitle
+});
+
+export const setSiteDescription = siteDescription => ({
+    type : commonActionTypes.SET_SITE_DESCRIPTION,
+    payload : siteDescription
+});

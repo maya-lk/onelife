@@ -101,3 +101,13 @@ export const selectMainLoading = createSelector(
     [selectCommonAPI],
     (commonParams) => commonParams.mainLoading
 );
+
+export const selectSiteTitle = createSelector(
+    [selectCommonAPI],
+    (commonParams) => commonParams.siteTitle
+);
+
+export const selectSiteDescription = createSelector(
+    [selectCommonAPI],
+    (commonParams) => commonParams.siteDescription
+);

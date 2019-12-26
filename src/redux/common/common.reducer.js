@@ -21,6 +21,8 @@ const INITIAL_STATE = {
     topText : null,
     resources : null,
     mainLoading: true,
+    siteTitle : null,
+    siteDescription : null
 }
 
 const commonReducer = ( state = INITIAL_STATE , action ) => {
@@ -124,6 +126,16 @@ const commonReducer = ( state = INITIAL_STATE , action ) => {
             return {
                 ...state,
                 mainLoading : !state.mainLoading
+            }
+        case commonActionTypes.SET_SITE_TITLE:
+            return {
+                ...state,
+                siteTitle : action.payload
+            }
+        case commonActionTypes.SET_SITE_DESCRIPTION:
+            return {
+                ...state,
+                siteDescription : action.payload
             }
         default:
             return state;
