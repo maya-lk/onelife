@@ -96,3 +96,8 @@ export const selectResources = createSelector(
     [selectCommonAPI],
     (commonParams) => commonParams.resources
 );
+
+export const selectMainLoading = createSelector(
+    [selectCommonAPI],
+    (commonParams) => commonParams.mainLoading
+);

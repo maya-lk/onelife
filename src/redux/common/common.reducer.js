@@ -19,7 +19,8 @@ const INITIAL_STATE = {
     zoomName : null,
     resourcesTitle : null,
     topText : null,
-    resources : null
+    resources : null,
+    mainLoading: true,
 }
 
 const commonReducer = ( state = INITIAL_STATE , action ) => {
@@ -118,6 +119,11 @@ const commonReducer = ( state = INITIAL_STATE , action ) => {
             return {
                 ...state,
                 resources : action.payload
+            }
+        case commonActionTypes.SET_MAIN_LOADING:
+            return {
+                ...state,
+                mainLoading : !state.mainLoading
             }
         default:
             return state;

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import {isMobile} from 'react-device-detect';
+import { createStructuredSelector } from 'reselect';
 
 import API from './lib/api';
 
@@ -24,12 +25,16 @@ import {
   setZoomName , 
   setResourcesTitle , 
   setTopText , 
-  setResources
+  setResources , 
+  setMainLoading
 } from './redux/common/common.actions';
 import { setServices } from './redux/services/services.actions';
 
+import { selectMainLoading } from './redux/common/common.selectors';
+
 import Home from './pages/home/home.component';
 import MobileMenu from './components/mobile-menu/mobile-menu.component';
+import MainLoadingScreen from './components/main-loading/main-loading.component';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -58,7 +63,8 @@ class App extends React.Component {
       setZoomName , 
       setResourcesTitle , 
       setTopText , 
-      setResources
+      setResources , 
+      setMainLoading
     } = this.props;
 
     //Common API
@@ -91,16 +97,30 @@ class App extends React.Component {
       setServices(response.data);
     });
 
+    setTimeout(
+      function() {
+        setMainLoading();
+      },
+     5000
+    );
+
   }
 
   render(){
+    const { mainLoading } = this.props;
     return (
-      <div className="appWrapper">
-        <Route path="/" exact component={Home} />
+      <div>
         {
-          (isMobile)?
-          <MobileMenu/>
-          : ''
+          (mainLoading)?
+          <MainLoadingScreen/>
+          : <div className="appWrapper">
+              <Route path="/" exact component={Home} />
+              {
+                (isMobile)?
+                <MobileMenu/>
+                : ''
+              }
+            </div>
         }
       </div>
     )
@@ -128,6 +148,11 @@ const mapDispatchToProps = dispatch => ({
   setResourcesTitle : (resourcesTitle) => dispatch(setResourcesTitle(resourcesTitle)),
   setTopText : (topText) => dispatch(setTopText(topText)),
   setResources : (resources) => dispatch(setResources(resources)),
+  setMainLoading : () => dispatch(setMainLoading())
 });
 
-export default connect(null , mapDispatchToProps)(App);
+const mapStateToProps = createStructuredSelector({
+  mainLoading : selectMainLoading
+})
+
+export default connect(mapStateToProps , mapDispatchToProps)(App);

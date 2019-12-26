@@ -94,3 +94,7 @@ export const setResources = resources => ({
     type : commonActionTypes.SET_RESOURCES,
     payload : resources
 });
+
+export const setMainLoading = () => ({
+    type : commonActionTypes.SET_MAIN_LOADING
+});
