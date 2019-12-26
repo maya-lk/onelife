@@ -84,3 +84,13 @@ export const setResourcesTitle = resourcesTitle => ({
     type : commonActionTypes.SET_RESOURCES_TITLE,
     payload : resourcesTitle
 });
+
+export const setTopText = topText => ({
+    type : commonActionTypes.SET_TOP_TEXT,
+    payload : topText
+});
+
+export const setResources = resources => ({
+    type : commonActionTypes.SET_RESOURCES,
+    payload : resources
+});

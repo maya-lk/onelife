@@ -86,3 +86,13 @@ export const selectResourcesTitle = createSelector(
     [selectCommonAPI],
     (commonParams) => commonParams.resourcesTitle
 );
+
+export const selectTopText = createSelector(
+    [selectCommonAPI],
+    (commonParams) => commonParams.topText
+);
+
+export const selectResources = createSelector(
+    [selectCommonAPI],
+    (commonParams) => commonParams.resources
+);

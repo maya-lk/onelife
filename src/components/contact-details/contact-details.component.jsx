@@ -10,12 +10,13 @@ import {
     selectOwnersBuilderPdf , 
     selectZoomID , 
     selectZoomName ,
-    selectResourcesTitle 
+    selectResourcesTitle , 
+    selectResources 
 } from '../../redux/common/common.selectors';
 
 import './contact-details.styles.scss';
 
-const ContactDetails = ({ address , email , contactNo , menus , ownersBuilderPdf , zoomID , zoomName , resourcesTitle }) => (
+const ContactDetails = ({ address , email , contactNo , menus , ownersBuilderPdf , zoomID , zoomName , resourcesTitle , resources }) => (
     <div className="contactDetailsWrap" id="contact">
         <h2>Contact</h2>
         <div className="contactDetail">
@@ -47,8 +48,8 @@ const ContactDetails = ({ address , email , contactNo , menus , ownersBuilderPdf
                 : ''
             }
             {
-                (ownersBuilderPdf)?
-                <li className="nav-item"><a className="nav-link" href={ownersBuilderPdf.url} download target="_blank" rel="noopener noreferrer" style={{ backgroundColor : '#343536' , color : '#fff' }}>Owners Builder PDF</a></li>
+                (resources)?
+            resources.map( resou => <li key={resou.resource_name} className="nav-item"><a className="nav-link" href={resou.file} download target="_blank" rel="noopener noreferrer" style={{ backgroundColor : '#343536' , color : '#fff' }}>{resou.resource_name}</a></li> )
                 : ''
             }                     
         </ul>
@@ -64,7 +65,8 @@ const mapStateToProps = createStructuredSelector({
     ownersBuilderPdf : selectOwnersBuilderPdf,
     zoomID : selectZoomID,
     zoomName : selectZoomName,
-    resourcesTitle : selectResourcesTitle
+    resourcesTitle : selectResourcesTitle , 
+    resources : selectResources
 });
 
 export default connect(mapStateToProps)(ContactDetails);

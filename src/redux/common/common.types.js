@@ -16,4 +16,6 @@ export const commonActionTypes = {
     SET_ZOOM_ID : 'SET_ZOOM_ID',
     SET_ZOOM_NAME : 'SET_ZOOM_NAME',
     SET_RESOURCES_TITLE : 'SET_RESOURCES_TITLE',
+    SET_TOP_TEXT : 'SET_TOP_TEXT',
+    SET_RESOURCES : 'SET_RESOURCES',
 }

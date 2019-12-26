@@ -22,7 +22,9 @@ import {
   setCalenderAPI , 
   setZoomID , 
   setZoomName , 
-  setResourcesTitle
+  setResourcesTitle , 
+  setTopText , 
+  setResources
 } from './redux/common/common.actions';
 import { setServices } from './redux/services/services.actions';
 
@@ -54,7 +56,9 @@ class App extends React.Component {
       setCalenderAPI ,
       setZoomID , 
       setZoomName , 
-      setResourcesTitle
+      setResourcesTitle , 
+      setTopText , 
+      setResources
     } = this.props;
 
     //Common API
@@ -77,6 +81,8 @@ class App extends React.Component {
       setZoomID(response.data.zoomID);
       setZoomName(response.data.zoomName);
       setResourcesTitle(response.data.resourcesTitle);
+      setTopText(response.data.topTextArea);
+      setResources(response.data.resources);
     });
 
     //Set Services
@@ -120,6 +126,8 @@ const mapDispatchToProps = dispatch => ({
   setZoomID : (zoomID) => dispatch(setZoomID(zoomID)),
   setZoomName : (zoomName) => dispatch(setZoomName(zoomName)),
   setResourcesTitle : (resourcesTitle) => dispatch(setResourcesTitle(resourcesTitle)),
+  setTopText : (topText) => dispatch(setTopText(topText)),
+  setResources : (resources) => dispatch(setResources(resources)),
 });
 
 export default connect(null , mapDispatchToProps)(App);

@@ -3,13 +3,20 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import {isMobile} from 'react-device-detect';
 
-import { selectSiteLogo , selectLogoSubtext , selectMainContent , selectMainImage , selectLinkedinLink } from '../../redux/common/common.selectors';
+import { 
+    selectSiteLogo , 
+    selectLogoSubtext , 
+    selectMainContent , 
+    selectMainImage , 
+    selectLinkedinLink ,
+    selectTopText
+} from '../../redux/common/common.selectors';
 
 import MobileMenuButton from '../mobile-menu-button/mobile-menu-button.component';
 
 import './main-banner.styles.scss';
 
-const MainBanner = ({ siteLogo , logoSubtext , mainImage , mainContent  , linkedinLink }) => (
+const MainBanner = ({ siteLogo , logoSubtext , mainImage , mainContent  , linkedinLink , topText }) => (
     <div className="mainBannerWrap">
         <div className="container d-flex flex-wrap p-0">
             {
@@ -34,7 +41,7 @@ const MainBanner = ({ siteLogo , logoSubtext , mainImage , mainContent  , linked
             <div className="mainContent">               
                 
                 <div className="logoWrap">
-                    <img src={siteLogo} alt="Site Logo"/>
+                    <div className="topTextArea" dangerouslySetInnerHTML={{__html: topText }} />
                     <div className="logoText" dangerouslySetInnerHTML={{__html: logoSubtext }} />
                 </div>
                 <div className="contentMain" dangerouslySetInnerHTML={{__html: mainContent }} />
@@ -57,7 +64,8 @@ const mapStateToProps = createStructuredSelector({
     logoSubtext : selectLogoSubtext, 
     mainContent : selectMainContent, 
     mainImage : selectMainImage,
-    linkedinLink : selectLinkedinLink
+    linkedinLink : selectLinkedinLink,
+    topText : selectTopText
 })
 
 export default connect(mapStateToProps)(MainBanner);
