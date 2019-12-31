@@ -41,24 +41,24 @@
         position: relative;
         z-index: 10;
         background-color: #fec901;
-        padding: 2rem 3rem;
+        padding: 2rem;
         margin-bottom: auto;
         min-height: 800px;
 
         .logoWrap {
-            margin-top: 5rem;
+            margin-top: 0;
             margin-bottom: 5rem;
 
             .topTextArea {
                 h1 {
                     font-weight: 600;
                     text-transform: uppercase;
-                    font-size: 70px;
+                    font-size: 94px;
                     margin-bottom: 0;
                 }
 
                 h2 {
-                    font-size: 68px;
+                    font-size: 48px;
                     font-weight: 600;
                     margin-bottom: 0;
                 }
@@ -69,14 +69,15 @@
                 margin-top: 2rem;
                 font-weight: 700;
                 text-transform: uppercase;
-                font-size: 2.2rem;
+                font-size: 24px;
             }
         }
 
         .contentMain {
             color: #3c3c3c;
             font-weight: 600;
-            font-size: 0.8rem;
+            font-size: 12px;
+            line-height: 25px;
 
             h2 {
                 font-size: 1.8rem;
